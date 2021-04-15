@@ -14,7 +14,7 @@ end
 def max_value(sorted_currency)
   puts "Pour afficher la ou les cryptos qui ont la plus grosse valeur dans notre base de données, veuillez cliquer sur votre touche entré."
   confirm = gets.chomp
-  print sorted_currency.max_by {|k, v| v}
+  print sorted_currency.first(5)
   puts " "
 end
 
@@ -22,7 +22,7 @@ end
 def min_value(sorted_currency)
   puts "Pour afficher la ou les cryptos qui ont la plus petite valeur dans notre base de données, veuillez cliquer sur votre touche entré."
   confirm = gets.chomp
-  print sorted_currency.min_by {|k, v| v}
+  print sorted_currency.last(5)
   puts " "
 end
 
@@ -31,7 +31,8 @@ def value_below6000(sorted_currency)
   puts "Pour afficher les devises dont le cours est inférieur à 6000 dans notre base de données, veuillez cliquer sur votre touche entré."
   confirm = gets.chomp
   print sorted_currency.select {|k, v| v < 6000}
-  puts " "
+  limit = sorted_currency.select {|k, v| v < 6000}.length
+  puts "Il y a un total de #{limit} devises dont le cours en inférieur à 6000."
 end
 
 # La devise la plus chère parmi celles dont le cours est inférieur à 6000.
